@@ -11,6 +11,9 @@
 # ==============================================================================
 relu:
     # Prologue  
+    addi sp, sp, -8
+    sw t0, 0(sp)
+    sw t1, 4(sp)
     add t0, a1, x0
 
 loop_start:
@@ -27,8 +30,8 @@ loop_continue:
 
 loop_end:
 
-
+    lw t0, 0(sp)
+    lw t1, 4(sp)
+    addi sp, sp, 8
     # Epilogue
-
-    
-	ret
+    ret
