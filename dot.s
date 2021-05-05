@@ -15,7 +15,7 @@
 dot:
 	
     # Prologue
-    addi sp sp -28
+    addi sp sp -32
     sw t0 0(sp)
     sw t1 4(sp)
     sw t2 8(sp)
@@ -23,6 +23,7 @@ dot:
     sw t4 16(sp)
     sw t5 20(sp)
     sw t6 24(sp)
+    sw ra 28(sp)
 
     slli t0 a3 2
     slli t1 a4 2
@@ -49,7 +50,8 @@ loop_end:
     lw t4 16(sp)
     lw t5 20(sp)
     lw t6 24(sp)
-    addi sp sp 28
+    lw ra 28(sp)
+    addi sp sp 32
     # Epilogue
 
     
