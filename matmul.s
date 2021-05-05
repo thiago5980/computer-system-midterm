@@ -17,7 +17,7 @@
 #	None, sets d = matmul(m0, m1)
 # =======================================================
 matmul:
-    addi sp sp -28
+    addi sp sp -48
     sw s0 0(sp)
     sw s1 4(sp)
     sw s2 8(sp)
@@ -25,6 +25,11 @@ matmul:
     sw s4 16(sp)
     sw s5 20(sp)
     sw ra 24(sp)
+    sw t0 28(sp) 
+    sw t1 32(sp)
+    sw t2 36(sp)
+    sw t3 40(sp)
+    sw t4 44(sp)
    # Error if mismatched dimensions
     bne a2 a4 mismatched_dimensions
 
@@ -92,7 +97,12 @@ outer_loop_end:
     lw s4 16(sp)
     lw s5 20(sp)
     lw ra 24(sp)
-    addi sp sp 28
+    sw t0 28(sp) 
+    sw t1 32(sp)
+    sw t2 36(sp)
+    sw t3 40(sp)
+    sw t4 44(sp)
+    addi sp sp 48
     ret
 
 
