@@ -47,12 +47,7 @@ outer_loop_start:
 inner_loop_start:
     beq s9 a5 inner_loop_end
     
-    addi sp sp -20
-    sw a0 0(sp)
-    sw a1 4(sp)
-    sw a2 8(sp)
-    sw a3 12(sp)
-    sw a4 16(sp)
+
    # for dot.s
     mv s6 a0
     mv s10 a1
@@ -74,8 +69,7 @@ inner_loop_start:
     mv a2 s2
     mv a3 s3
     mv a4 s11
-    mv a5 s4
-    addi sp sp 20
+
 
     sw s0 0(a6)
     addi a6 a6 4
