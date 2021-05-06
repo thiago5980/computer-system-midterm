@@ -41,10 +41,10 @@ matmul:
     mv s5 a3
 
 outer_loop_start:
-    beq t1 a2 outer_loop_end
+    beq t1 a1 outer_loop_end
     
 inner_loop_start:
-    beq t3 a4 inner_loop_end
+    beq t3 a5 inner_loop_end
     
     addi sp sp -20
     sw a0 0(sp)
@@ -97,11 +97,11 @@ outer_loop_end:
     lw s4 16(sp)
     lw s5 20(sp)
     lw ra 24(sp)
-    sw t0 28(sp) 
-    sw t1 32(sp)
-    sw t2 36(sp)
-    sw t3 40(sp)
-    sw t4 44(sp)
+    lw t0 28(sp) 
+    lw t1 32(sp)
+    lw t2 36(sp)
+    lw t3 40(sp)
+    lw t4 44(sp)
     addi sp sp 48
     ret
 
