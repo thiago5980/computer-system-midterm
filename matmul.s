@@ -25,26 +25,26 @@ matmul:
     sw s4 16(sp)
     sw s5 20(sp)
     sw ra 24(sp)
-    sw t0 28(sp) 
-    sw t1 32(sp)
-    sw t2 36(sp)
-    sw t3 40(sp)
-    sw t4 44(sp)
+    sw s6 28(sp) 
+    sw s7 32(sp)
+    sw s8 36(sp)
+    sw s9 40(sp)
+    sw s10 44(sp)
    # Error if mismatched dimensions
     bne a2 a4 mismatched_dimensions
 
    # Prologue
-    add t1 x0 x0
-    add t3 x0 x0
+    add s7 x0 x0
+    add s9 x0 x0
     addi s1 x0 1
     slli s1 s1 2
     mv s5 a3
 
 outer_loop_start:
-    beq t1 a1 outer_loop_end
+    beq s7 a1 outer_loop_end
     
 inner_loop_start:
-    beq t3 a5 inner_loop_end
+    beq s9 a5 inner_loop_end
     
     addi sp sp -20
     sw a0 0(sp)
@@ -76,16 +76,16 @@ inner_loop_start:
     sw s0 0(a6)
     addi a6 a6 4
     
-    addi t3 t3 1
+    addi s9 s9 1
     add a3 a3 s1
     j inner_loop_start
 
 inner_loop_end:
-    add t3 x0 x0
+    add s9 x0 x0
     mv a3 s5
-    addi t1 t1 1
-    mul t2 s1 a2
-    add a0 a0 t2
+    addi s7 s7 1
+    mul s8 s1 a2
+    add a0 a0 s8
     j outer_loop_start
 
 outer_loop_end:  
@@ -97,11 +97,11 @@ outer_loop_end:
     lw s4 16(sp)
     lw s5 20(sp)
     lw ra 24(sp)
-    lw t0 28(sp) 
-    lw t1 32(sp)
-    lw t2 36(sp)
-    lw t3 40(sp)
-    lw t4 44(sp)
+    lw s6 28(sp) 
+    lw s7 32(sp)
+    lw s8 36(sp)
+    lw s9 40(sp)
+    lw s10 44(sp)
     addi sp sp 48
     ret
 
